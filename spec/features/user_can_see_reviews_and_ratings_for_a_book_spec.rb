@@ -23,3 +23,19 @@ describe 'user show page' do
     expect(page).to have_content(review.user.name)
   end
 end
+
+# As a User,
+# When I visit the book show page,
+# I see the average rating for that book.
+
+describe 'user show page' do
+  it 'should show the average rating for that book' do
+    user = User.create(name: 'Bob')
+    book = Book.create(title: 'House of Leaves')
+    review = user.reviews.create!(description: 'Fantasic', rating: 2, book: book, user: user)
+
+    visit book_path(book)
+
+    expect(page). have_content(review.average_rating)
+  end
+end
