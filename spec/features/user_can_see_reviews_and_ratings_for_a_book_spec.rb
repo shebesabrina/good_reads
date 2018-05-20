@@ -13,7 +13,7 @@ describe 'user show page' do
   it 'should show reviews and ratings' do
     user = User.create(name: 'Bob')
     book = Book.create(title: 'House of Leaves')
-    review = user.reviews.create(description: 'Fantasic', rating: 2, book: book, user: user)
+    review = user.reviews.create!(description: 'Fantasic', rating: 2, book: book, user: user)
 
     visit book_path(book)
 
